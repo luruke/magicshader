@@ -2,7 +2,8 @@
 
 A thin wrapper on top of `RawShaderMaterial`, that allows to easily create new uniforms and live-edit them via `dat.gui`.
 
-No need to create the uniforms manually and bind them with `dat.gui`. Just write some comments in your GLSL, and everything will work magically ✨
+No need to create the uniforms manually and bind them with `dat.gui`.  
+Just write some comments in your GLSL, and everything will work magically ✨
 
 
 ## 🕵️‍♂️ How to use
