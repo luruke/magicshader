@@ -115,5 +115,6 @@ gui.destroy();
 ## TODO
 
 - [ ] add support for sampler2D and FBO?
+- [ ] check if it works with firefox/safari shader editor
 - [ ] inspect/edit threejs default uniforms (like `projectionMatrix`)
 - [ ] support spector reload  
