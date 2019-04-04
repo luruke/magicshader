@@ -5,7 +5,7 @@ A thin wrapper on top of `RawShaderMaterial`, that allows to easily create new u
 No need to create the uniforms manually and bind them with `dat.gui`. Just write some comments in your GLSL, and everything will work magically ✨
 
 
-## How to use
+## 🕵️‍♂️ How to use
 Install via npm
 
 ```
@@ -22,7 +22,7 @@ const material = new MagicShader({...})
 
 The parameters are exactly the same.
 
-## Ok...where the magic is?
+## 🤷‍♀️ Ok...where the magic is?
 
 Now you can add the `// ms({})`  magic comment after your uniforms.
 
@@ -60,7 +60,7 @@ This will give you:
 No need to init your uniform.
 
 
-## What else?
+## 👨‍💻 What else?
 ```javascript
 const material = new MagicShader({
   name: 'Cube Shader!',
@@ -102,8 +102,7 @@ Will result in:
 ![full](./images/full.gif "full")
 
 
-
-## Ok, cool. Just finished my app and I'm ready to deploy
+## 💅 Ok, cool. Just finished my app and I'm ready to deploy
 
 Then you can hide the `dat.gui` UI
 ```javascript
@@ -112,8 +111,9 @@ gui.destroy();
 ```
 
 
-## TODO
+## 😴 TODO
 
+- [ ] Do more tests...
 - [ ] add support for sampler2D and FBO?
 - [ ] check if it works with firefox/safari shader editor
 - [ ] inspect/edit threejs default uniforms (like `projectionMatrix`)
