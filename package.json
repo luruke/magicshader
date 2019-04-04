@@ -4,7 +4,7 @@
   "description": "🔮 Tiny helper for three.js to debug and write shaders",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel example/index.html"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "dependencies": {
     "dat.gui": "^0.7.6",
     "three": "^0.103.0"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.3"
   }
 }
