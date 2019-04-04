@@ -57,7 +57,8 @@ const material = new MagicShader({
 This will give you:  
 ![1](./images/1.gif "1")
 
-No need to init your uniform.
+No need to init your uniform or bind `dat.gui`.  
+You can just work on your GLSL files.
 
 
 ## 👨‍💻 What else?
