@@ -1,0 +1,23 @@
+{
+  "name": "magicshader",
+  "version": "0.1.0",
+  "description": "🔮 Tiny helper for three.js to debug and write shaders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luruke/magicshader.git"
+  },
+  "author": "luruke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luruke/magicshader/issues"
+  },
+  "homepage": "https://github.com/luruke/magicshader#readme",
+  "dependencies": {
+    "dat.gui": "^0.7.6",
+    "three": "^0.103.0"
+  }
+}
