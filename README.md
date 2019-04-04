@@ -24,7 +24,7 @@ The parameters are exactly the same.
 
 ## Ok...where the magic is?
 
-Now you can add the `// mc({})`  magic comment after your uniforms.
+Now you can add the `// ms({})`  magic comment after your uniforms.
 
 
 Example:
