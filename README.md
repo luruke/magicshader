@@ -87,7 +87,7 @@ const material = new MagicShader({
     
     uniform vec3 color; // ms({ value: '#ff0000' })
     uniform float brightness; // ms({ value: 0, range: [0, 0.5], step: 0.1 })
-    uniform vec2 dummyValue; // ms({ value: [1024, 768], range: [[0, 2000, 0, 1500]] })
+    uniform vec2 dummyValue; // ms({ value: [1024, 768], range: [[0, 2000], [0, 1500]] })
     uniform bool visible; // ms({ value: 1, name: 'Visibility' })
     uniform int test; // ms({ value: 0 })
 
@@ -98,7 +98,7 @@ const material = new MagicShader({
 });
 ```
 
-Will result in:
+Will result in:  
 ![full](./images/full.gif "full")
 
 
