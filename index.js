@@ -97,11 +97,12 @@ class MagicShader extends RawShaderMaterial {
       const uniform = this.uniforms[key];
       const folder = this.gui.addFolder(magicJson.name || `🔮 ${magicUniform.type} - ${key}`);
 
-
       if (uniform.value instanceof Color) {
         const add = folder.addColor(magicJson, 'value').onChange(res => {
           uniform.value.set(res);
         });
+
+        add.listen();
       } else if (Array.isArray(magicJson.value)) {
         Object.keys(uniform.value).forEach(index => {
           const add = folder.add(uniform.value, index);
@@ -112,6 +113,8 @@ class MagicShader extends RawShaderMaterial {
             add.min(magicJson.range[index][0]);
             add.max(magicJson.range[index][1]);
           }
+
+          add.listen();
         });
       } else {
         const add = folder.add(uniform, 'value');
@@ -123,6 +126,8 @@ class MagicShader extends RawShaderMaterial {
           add.min(magicJson.range[0]);
           add.max(magicJson.range[1]);
         }
+
+        add.listen();
       }
     });
   }
