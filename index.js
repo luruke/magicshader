@@ -69,6 +69,7 @@ const gui = new dat.GUI({
   name: 'MagicShader',
 });
 
+let spectorGui;
 let id = 0;
 
 class MagicShader extends RawShaderMaterial {
@@ -84,12 +85,18 @@ class MagicShader extends RawShaderMaterial {
 
     this.params = params;
     this.magicUniforms = magicUniforms;
+    this.displayName = this.params.name || `Shader n. ${++id}`;
 
+    this.spector();
     this.bindUI();
   }
 
   bindUI() {
-    this.gui = gui.addFolder(this.params.name || `Shader n. ${++id}`);
+    if (this.gui) {
+      gui.removeFolder(this.gui);
+    }
+
+    this.gui = gui.addFolder(this.displayName);
 
     Object.keys(this.magicUniforms).forEach(key => {
       const magicUniform = this.magicUniforms[key];
@@ -130,6 +137,62 @@ class MagicShader extends RawShaderMaterial {
         add.listen();
       }
     });
+  }
+  
+  // Spector.js stuff
+  spector() {
+    if (!window.spector) {
+      return;
+    }
+
+    if (!spectorGui) {
+      // Just once, for the whole context.
+      spectorGui = gui.addFolder('📈 Spector');
+
+      this.spectorFPS = 0;
+      setInterval(() => {
+        this.spectorFPS = spector.getFps();
+      }, 200);
+
+      spectorGui.add(this, 'spectorFPS').name('FPS').listen();
+      spectorGui.add(this, 'capture');
+    }
+    
+    this.checkProgram = this.checkProgram.bind(this);
+    this.checkProgramInterval = setInterval(this.checkProgram, 200);
+  }
+
+  capture() {
+    const instance = document.querySelector('canvas');
+    spector.captureNextFrame(instance);
+  }
+
+  checkProgram() {
+    if (this.program && this.program.program) {
+      this.program.program.__SPECTOR_Object_TAG.displayText = this.displayName;
+      this.program.vertexShader.__SPECTOR_Object_TAG.displayText = `Vertex - ${this.displayName}`;
+      this.program.fragmentShader.__SPECTOR_Object_TAG.displayText = `Fragment - ${this.displayName}`;
+
+      this.program.program.__SPECTOR_rebuildProgram = this.rebuildShader.bind(this);
+      clearInterval(this.checkProgramInterval);
+    }
+  }
+
+  rebuildShader(vertex, fragment, onCompile, onError) {
+    this.vertexShader = vertex;
+    this.fragmentShader = fragment;
+    
+    this.magicUniforms = parseShaders(vertex, fragment);
+    this.uniforms = {
+      ...this.uniforms,
+      ...magicUniformsToThree(this.magicUniforms),
+    };
+    
+    this.needsUpdate = true;
+    this.bindUI();
+
+    onCompile(this.program.program);
+    this.checkProgramInterval = setInterval(this.checkProgram, 200);
   }
 }
 
