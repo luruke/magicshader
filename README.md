@@ -103,6 +103,11 @@ const material = new MagicShader({
 Will result in:  
 ![full](./images/full.gif "full")
 
+## 🕵️‍ SpectorJS
+
+With the [SpectorJS extension](https://github.com/BabylonJS/Spector.js/blob/master/documentation/extension.md) enabled, you can live-edit the shaders. You can even add and modify "magic" uniforms on the fly.
+
+![full](./images/spector.gif "full")
 
 ## 💅 Ok, cool. Just finished my app and I'm ready to deploy
 
@@ -119,4 +124,3 @@ gui.destroy();
 - [ ] add support for sampler2D and FBO?
 - [ ] check if it works with firefox/safari shader editor
 - [ ] inspect/edit threejs default uniforms (like `projectionMatrix`)
-- [ ] support spector reload  
