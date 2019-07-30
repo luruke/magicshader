@@ -74,6 +74,7 @@ let id = 0;
 
 class MagicShader extends RawShaderMaterial {
   constructor(params) {
+    const originalParams = params;
     const magicUniforms = parseShaders(params.vertexShader, params.fragmentShader);
 
     params.uniforms = {
@@ -83,6 +84,7 @@ class MagicShader extends RawShaderMaterial {
 
     super(params);
 
+    this.originalParams = originalParams;
     this.params = params;
     this.magicUniforms = magicUniforms;
     this.displayName = this.params.name || `Shader n. ${++id}`;
@@ -138,7 +140,7 @@ class MagicShader extends RawShaderMaterial {
       }
     });
   }
-  
+
   // Spector.js stuff
   spector() {
     if (!window.spector) {
@@ -157,7 +159,7 @@ class MagicShader extends RawShaderMaterial {
       spectorGui.add(this, 'spectorFPS').name('FPS').listen();
       spectorGui.add(this, 'capture');
     }
-    
+
     this.checkProgram = this.checkProgram.bind(this);
     this.checkProgramInterval = setInterval(this.checkProgram, 200);
   }
@@ -181,18 +183,22 @@ class MagicShader extends RawShaderMaterial {
   rebuildShader(vertex, fragment, onCompile, onError) {
     this.vertexShader = vertex;
     this.fragmentShader = fragment;
-    
+
     this.magicUniforms = parseShaders(vertex, fragment);
     this.uniforms = {
       ...this.uniforms,
       ...magicUniformsToThree(this.magicUniforms),
     };
-    
+
     this.needsUpdate = true;
     this.bindUI();
 
     onCompile(this.program.program);
     this.checkProgramInterval = setInterval(this.checkProgram, 200);
+  }
+
+  clone() {
+    return new this.constructor(this.originalParams).copy(this);
   }
 }
 
