@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/luruke/magicshader#readme",
   "dependencies": {
-    "dat.gui": "^0.7.6",
-    "three": "^0.111.0"
+    "dat.gui": "^0.7.6"
   },
   "devDependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "^1.12.4",
+    "three": "^0.111.0"
+  },
+  "peerDependencies": {
+    "three": ">= 0.111.0"
   }
 }
