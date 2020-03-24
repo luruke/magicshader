@@ -1,6 +1,6 @@
 {
   "name": "magicshader",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "🔮 Tiny helper for three.js to debug and write shaders",
   "main": "index.js",
   "scripts": {
@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/luruke/magicshader#readme",
   "dependencies": {
-    "dat.gui": "^0.7.6"
+    "dat.gui": "^0.7.6",
+    "three": "^0.114.0"
   },
   "devDependencies": {
-    "parcel": "^1.12.4",
-    "three": "^0.111.0"
+    "parcel": "^1.12.4"
   },
   "peerDependencies": {
     "three": ">= 0.111.0"
