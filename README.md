@@ -1,5 +1,8 @@
 # 🔮 MagicShader
 
+> ⚠️ probably won't work with modern version of threejs, last time I tested was with r114  
+> pr is welcome
+
 A thin wrapper on top of `RawShaderMaterial`, that allows to easily create new uniforms and live-edit them via `dat.gui`.
 
 No need to create the uniforms manually and bind them with `dat.gui`.  
